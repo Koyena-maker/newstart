@@ -22,7 +22,8 @@ public class standAloneTest {
 		WebDriver driver=new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/client");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		long time = 2000;
+	//	driver.manage().timeouts().implicitlyWait(time,Durat);
 //		driver.findElement(By.xpath("//*[text()='Register']")).click();
 //		driver.findElement(By.id("firstName")).sendKeys("Manisha");
 //		driver.findElement(By.cssSelector("[placeholder='Last Name']")).sendKeys("Mukherjee");
@@ -37,11 +38,11 @@ public class standAloneTest {
 //		Actions action=new Actions(driver);
 //		action.moveToElement(driver.findElement(By.xpath("//*[@value='Register']"))).click().build().perform();
 //		driver.findElement(By.xpath("//div/button")).click();
-		driver.findElement(By.id("userEmail")).sendKeys("mani145@gmail.com");
+		driver.findElement(By.id("userEmail")).sendKeys("rup123@yopmail.com");
 		driver.findElement(By.id("userPassword")).sendKeys("Host@1234");
 		driver.findElement(By.name("login")).click();
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@class='card-body']"))));
+	//	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
+	//	wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@class='card-body']"))));
 		List <WebElement> names=driver.findElements(By.xpath("//*[@class='card-body']"));
 //		for(int i=0;i<names.size();i++)
 //		{
@@ -55,20 +56,20 @@ public class standAloneTest {
 		WebElement element=names.stream().filter(name->name.findElement(By.cssSelector("b")).getText().equalsIgnoreCase("IPHONE 13 PRO")).findAny().orElse(null);
 		element.findElement(By.cssSelector("[class='card-body'] button:last-of-type")).click();
 		WebElement element1=names.stream().filter(name->name.findElement(By.cssSelector("b")).getText().equalsIgnoreCase("ADIDAS ORIGINAL")).findAny().orElse(null);
-		wait.until(ExpectedConditions.visibilityOf(element1));
+	//	wait.until(ExpectedConditions.visibilityOf(element1));
 		element1.findElement(By.cssSelector("[class='card-body'] button:last-of-type")).click();
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
+	 //   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
+	//	wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
 		driver.findElement(By.cssSelector("[routerlink=\"/dashboard/cart\"]")).click();
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("[class='cartSection'] h3"))));
+	//	wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("[class='cartSection'] h3"))));
 		List <WebElement> lists=driver.findElements(By.cssSelector("[class=\"cartSection\"]"));
 		Boolean match=lists.stream().anyMatch(itemneeded->itemneeded.findElement(By.cssSelector("h3")).getText().equalsIgnoreCase("ADIDAS ORIGINAL"));
 	    System.out.println(match);
 	    Actions checkout=new Actions(driver);
 	    checkout.moveToElement(driver.findElement(By.cssSelector(".totalRow button"))).click().build().perform();
-	    wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("[placeholder='Select Country']"))));
+	  //  wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("[placeholder='Select Country']"))));
 	    checkout.sendKeys( driver.findElement(By.cssSelector("[placeholder=\"Select Country\"]")), "Bri").build().perform();
-	    wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".ta-results"))));
+	   // wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".ta-results"))));
 	    List <WebElement> countries=driver.findElements(By.cssSelector(".ta-results button span"));
 	    WebElement cou=countries.stream().filter(country->country.getText().equalsIgnoreCase("british indian ocean territory")).findAny().orElse(null);
 	    cou.click();
@@ -80,6 +81,7 @@ public class standAloneTest {
 	    	System.out.println(ids.get(i).getText());
 	    }
 	    String message=driver.findElement(By.cssSelector(".hero-primary")).getText();
+	    System.out.println(message);
 	    Assert.assertTrue(message.equalsIgnoreCase("Thankyou for the order."));
 	    driver.close();
 	   
