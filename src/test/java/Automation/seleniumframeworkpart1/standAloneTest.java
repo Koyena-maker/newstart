@@ -37,7 +37,7 @@ public class standAloneTest {
 //		Actions action=new Actions(driver);
 //		action.moveToElement(driver.findElement(By.xpath("//*[@value='Register']"))).click().build().perform();
 //		driver.findElement(By.xpath("//div/button")).click();
-		driver.findElement(By.id("userEmail")).sendKeys("mani145@gmail.com");
+		driver.findElement(By.id("userEmail")).sendKeys("rup123@yopmail.com");
 		driver.findElement(By.id("userPassword")).sendKeys("Host@1234");
 		driver.findElement(By.name("login")).click();
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -80,6 +80,7 @@ public class standAloneTest {
 	    	System.out.println(ids.get(i).getText());
 	    }
 	    String message=driver.findElement(By.cssSelector(".hero-primary")).getText();
+	    System.out.println(message);
 	    Assert.assertTrue(message.equalsIgnoreCase("Thankyou for the order."));
 	    driver.close();
 	   
