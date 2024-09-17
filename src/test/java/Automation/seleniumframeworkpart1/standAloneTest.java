@@ -23,11 +23,11 @@ public class standAloneTest {
 		WebDriver driver=new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/client");
 		driver.manage().window().maximize();
-	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	    driver.findElement(By.id("userEmail")).sendKeys("rup123@yopmail.com");
 		driver.findElement(By.id("userPassword")).sendKeys("Host@1234");
 		driver.findElement(By.name("login")).click();
-		WebDriverWait wait=new WebDriverWait(driver, 10);
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@class='card-body']"))));
 		List <WebElement> names=driver.findElements(By.xpath("//*[@class='card-body']"));
 		WebElement element=names.stream().filter(name->name.findElement(By.cssSelector("b")).getText().equalsIgnoreCase("IPHONE 13 PRO")).findAny().orElse(null);
