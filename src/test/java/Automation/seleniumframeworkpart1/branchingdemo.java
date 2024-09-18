@@ -20,6 +20,11 @@ public class branchingdemo
 	{
 		System.out.println("Bye!!");
 	}
+	@Test
+	public void newlyAdded()
+	{
+		System.out.println("Hello again!!");
+	}
 
 
 }
